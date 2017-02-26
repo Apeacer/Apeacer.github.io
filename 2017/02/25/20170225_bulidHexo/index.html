@@ -6,17 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2017/2 | Apeace</title>
+  <title>Apeace</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="blogs">
-<meta property="og:type" content="website">
+  <meta name="description" content="用Hexo+GitHug搭建个人博客通过查阅资料，一边摸索一边实践，终于通过Hexo+GitHub搭建好了一个个人博客站点，在这里分享一下，尽量说得详细，降低门槛。本分享主要针对Mac平台。">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Apeace">
-<meta property="og:url" content="http://yoursite.com/archives/2017/02/index.html">
+<meta property="og:url" content="http://yoursite.com/2017/02/25/20170225_bulidHexo/index.html">
 <meta property="og:site_name" content="Apeace">
-<meta property="og:description" content="blogs">
+<meta property="og:description" content="用Hexo+GitHug搭建个人博客通过查阅资料，一边摸索一边实践，终于通过Hexo+GitHub搭建好了一个个人博客站点，在这里分享一下，尽量说得详细，降低门槛。本分享主要针对Mac平台。">
+<meta property="og:updated_time" content="2017-02-26T03:07:42.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Apeace">
-<meta name="twitter:description" content="blogs">
+<meta name="twitter:description" content="用Hexo+GitHug搭建个人博客通过查阅资料，一边摸索一边实践，终于通过Hexo+GitHub搭建好了一个个人博客站点，在这里分享一下，尽量说得详细，降低门槛。本分享主要针对Mac平台。">
   
     <link rel="alternative" href="/atom.xml" title="Apeace" type="application/atom+xml">
   
@@ -160,43 +161,168 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-20170225_bulidHexo" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
+    <div class="article-entry" itemprop="articleBody">
       
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/blogs/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/blogs/2017/02/25/20170225_bulidHexo/" class="archive-article-date">
-  	<time datetime="2017-02-25T11:17:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-25</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+        <hr>
+<h2 id="用Hexo-GitHug搭建个人博客"><a href="#用Hexo-GitHug搭建个人博客" class="headerlink" title="用Hexo+GitHug搭建个人博客"></a>用Hexo+GitHug搭建个人博客</h2><p>通过查阅资料，一边摸索一边实践，终于通过Hexo+GitHub搭建好了一个个人博客站点，在这里分享一下，尽量说得详细，降低门槛。本分享主要针对Mac平台。<a id="more"></a><br>首先说一下原理：首先Github Pages 是开放的公共静态页面搭建托管服务，站点可以被免费托管在Github 上，你可以使用github账户名+/github.io 域名来发布站点。Hexo将在本地生成静态页面并自动关联发布到github上</p>
+<h2 id="正文："><a href="#正文：" class="headerlink" title="正文："></a>正文：</h2><h3 id="GitHub相关"><a href="#GitHub相关" class="headerlink" title="GitHub相关"></a>GitHub相关</h3><blockquote>
+<ul>
+<li>首先我们需要一个<a href="https://github.com/" target="_blank" rel="external">Github</a>账号，用来给我们提供服务、托管站点。并建立与你用户名对应的仓库，仓库名必须为【your_user_name.github.io】</li>
+<li>然后我们要在MAC本地安装<a href="https://sourceforge.net/projects/git-osx-installer/" target="_blank" rel="external">git</a>,如果你已经安装了XCode，将自带git不必再安装。打开终端，输入下面命令，如果显示版本信息则证明安装成功。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git --version</div></pre></td></tr></table></figure>
+<ul>
+<li>最后我们要建立关联，通过下面前两条命令配置本地git的全局用户名和邮箱，第三条命令用来显示git所有全局信息，检查用户名和邮箱是否成功配置到git。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ git config --global user.name <span class="string">"username"</span></div><div class="line">$ git config --global user.email <span class="string">"email@163.com"</span></div><div class="line">$ git config --list 获取Git配置信息</div></pre></td></tr></table></figure>
+<ul>
+<li>通过下条命令，来根据你的用户名生成sskey，一路按回车将后，在~/.ssh／目录下将生成两个文件，将其中id_rsa.pub中的内容复制到你的github主页右上角头像 –&gt; setting –&gt; SSH and GPG keys –&gt; New SSH key –&gt; Key 中并保存。这样你的本地git关联了你的GitHub账号了。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ssh-keygen -t -C <span class="string">"username"</span></div></pre></td></tr></table></figure>
+<ul>
+<li>通过下面命令，之后再输入yes可以验证配置是否成功</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ssh git@github.com</div></pre></td></tr></table></figure>
+</blockquote>
+<h3 id="Node-js安装"><a href="#Node-js安装" class="headerlink" title="Node.js安装"></a>Node.js安装</h3><blockquote>
+<ul>
+<li>用来生成静态页面，到Node.js<a href="https://nodejs.org/en/" target="_blank" rel="external">官网</a>下载，一路安装。通过下面命令显示版本信息检查是否安装成功</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">$ npm -v </div><div class="line">``` </div><div class="line"></div><div class="line"><span class="comment">### HEXO安装</span></div><div class="line"></div><div class="line">&gt; * 首先安装hexo</div><div class="line">&gt;  </div><div class="line">``` bash</div><div class="line">$ sudo npm install -g hexo</div></pre></td></tr></table></figure>
+<ul>
+<li>创建一个本地用来存放站点内容的目录如myBlogs，并cd到myBlogs目录下，执行下面命令进行初始化</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ hexo init</div><div class="line">``` </div><div class="line">&gt; * 编辑myBlogs下面的 _config.yml 如下所示：</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>deploy:<br>  type: git<br>  repository: <a href="https://github.com/your_user_name/your_user_name.github.io.git" target="_blank" rel="external">https://github.com/your_user_name/your_user_name.github.io.git</a><br>  branch: master<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt; * 执行下面命令后，才能使git部署</div><div class="line">&gt; </div><div class="line">``` bash</div><div class="line">$ npm install hexo-deployer-git --save</div></pre></td></tr></table></figure></p>
+<p>###HEXO使用</p>
+<blockquote>
+<ul>
+<li>在myBlogs目录中，/source/_posts/ 目录下存放你的文章内容，可下载<a href="https://macdown.uranusjr.com" target="_blank" rel="external">Markdown</a>编辑器进行编写。_config.yml 文件用来配置站点用户名、主题啊之类的一些全局信息。/theme/ 目录下存放你下载好的主题，主题中的_config.yml 文件里面可以修改你的头像、联系方式、友情链接之类的信息。</li>
+<li>当你一切都配置好后便可以通过 hexo generate 命令生成静态页面。通过 hexo deploy 命令进行部署。以后每次你写完文章都可以通过下面三个命令进行部署</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ hexo clear</div><div class="line">$ hexo generate</div><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<ul>
+<li>当然，在deploy之前，可以先用下面命令在本地调试，输入命令后，在浏览器输入<a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a>，可以预览先预览你的站点。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+</blockquote>
+<p>这样博客个人站点就部署完了，可以愉快的“折腾”了～，最后hexo详细的命令解释与配置信息等请点击<a href="https://hexo.io/zh-cn/docs/commands.html" target="_blank" rel="external">此处</a>查看。欢迎一起交流学习qq：2574919263。</p>
+<p>2017-02-26 11:06</p>
 
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/wechatepay.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/02/25/20170225_bulidHexo/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-  
-    </div></section>
+
   
 
-    
+
+
+
+
+  
+    <div class="duoshuo"></div>
+  
+
+
 
 
           </div>
@@ -219,8 +345,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
