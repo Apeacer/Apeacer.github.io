@@ -35,8 +35,17 @@
   
 
 
-  <script src="https://cdn1.lncld.net/static/js/2.1.2/av-min.js"></script>
-  <script>AV.initialize("J25QMj9DK8xhvlsdoIkMwi1o-gzGzoHsz", "hfXFdKTJgJGTWV11xFyfXGgz");</script>
+  <!-- 增加点击次数插件-->
+
+    <!-- jQuery文件-->
+<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<!-- 你可以用官方的cdn，那就把这里注释掉 -->
+<!-- <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script> -->
+<script src="/js/av-core-mini-0.6.1.js"></script>
+<script>AV.initialize("J25QMj9DK8xhvlsdoIkMwi1o-gzGzoHsz", "hfXFdKTJgJGTWV11xFyfXGgz");</script>
+<!-- 注意这里，一会要把这个js文件引入进来 -->
+<script src="/js/Counter.js"></script>
+
 </head>
 
 <body>
@@ -198,6 +207,19 @@
       		
 		</ul>
 	</div>
+
+
+
+<!-- 这个counter-tag counter的样式，你们得自己弄啊.. 我就不想贴样式代码了.. -->
+<div class="counter-tag counter">
+    <!-- 别忘记这个类名... post-title-link -->
+    <span id="/2017/02/26/20170225_bulidHexo/" class="leancloud_visitors post-title-link"
+          style="font-size: 12px" data-flag-title="用Hexo+GitHug搭建个人博客">
+         &nbsp;
+    <!-- 这里给出浏览数,定义在language中哈-->
+        post.visitors
+    </span>
+</div>
 
       
 	<div class="article-category tagcloud">
