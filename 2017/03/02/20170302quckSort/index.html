@@ -6,27 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://apeacer.github.io">
-  <title>about | Apeace</title>
+  <title>关于快速排序算法优化的研究和实现 | Apeace</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Apeacer,
-毕业于山大，码砖于帝都
-行走在路上，看着远方于风景
-1234567public boolean isGenius(int strive) &amp;#123;	int quantitativeChange = 0;	while(strive--&amp;gt;0) &amp;#123;		if(++quantitativeChange &amp;gt; qualitativeChange) 			return">
-<meta property="og:type" content="website">
-<meta property="og:title" content="about">
-<meta property="og:url" content="https://apeacer.github.io/about/index.html">
+  <meta name="description" content="今天研究了一下快速排序的优化问题，关于快速排序的优化，很多人已经有很详细的解释了，我就不多做详细的阐述，主要实现一下代码，解释一下jdk中Arrays.sort,并对比一下，做一个总结。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于快速排序算法优化的研究和实现">
+<meta property="og:url" content="https://apeacer.github.io/2017/03/02/20170302quckSort/index.html">
 <meta property="og:site_name" content="Apeace">
-<meta property="og:description" content="Apeacer,
-毕业于山大，码砖于帝都
-行走在路上，看着远方于风景
-1234567public boolean isGenius(int strive) &amp;#123;	int quantitativeChange = 0;	while(strive--&amp;gt;0) &amp;#123;		if(++quantitativeChange &amp;gt; qualitativeChange) 			return">
-<meta property="og:updated_time" content="2017-02-26T08:55:20.000Z">
+<meta property="og:description" content="今天研究了一下快速排序的优化问题，关于快速排序的优化，很多人已经有很详细的解释了，我就不多做详细的阐述，主要实现一下代码，解释一下jdk中Arrays.sort,并对比一下，做一个总结。">
+<meta property="og:updated_time" content="2017-03-05T10:12:21.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="about">
-<meta name="twitter:description" content="Apeacer,
-毕业于山大，码砖于帝都
-行走在路上，看着远方于风景
-1234567public boolean isGenius(int strive) &amp;#123;	int quantitativeChange = 0;	while(strive--&amp;gt;0) &amp;#123;		if(++quantitativeChange &amp;gt; qualitativeChange) 			return">
+<meta name="twitter:title" content="关于快速排序算法优化的研究和实现">
+<meta name="twitter:description" content="今天研究了一下快速排序的优化问题，关于快速排序的优化，很多人已经有很详细的解释了，我就不多做详细的阐述，主要实现一下代码，解释一下jdk中Arrays.sort,并对比一下，做一个总结。">
   
     <link rel="alternative" href="/atom.xml" title="Apeace" type="application/atom+xml">
   
@@ -171,36 +162,91 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="page-undefined" class="article article-type-page " itemscope itemprop="blogPost">
+            <article id="post-20170302quckSort" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      about
+      关于快速排序算法优化的研究和实现
     </h1>
   
 
         
-        <a href="/about/index.html" class="archive-article-date">
-  	<time datetime="2017-02-26T08:23:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-26</time>
+        <a href="/2017/03/02/20170302quckSort/" class="archive-article-date">
+  	<time datetime="2017-03-02T11:50:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-02</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Apeacer,</p>
-<p>毕业于山大，码砖于帝都</p>
-<p>行走在路上，看着远方于风景</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isGenius</span><span class="params">(<span class="keyword">int</span> strive)</span> </span>&#123;</div><div class="line">	<span class="keyword">int</span> quantitativeChange = <span class="number">0</span>;</div><div class="line">	<span class="keyword">while</span>(strive--&gt;<span class="number">0</span>) &#123;</div><div class="line">		<span class="keyword">if</span>(++quantitativeChange &gt; qualitativeChange) </div><div class="line">			<span class="keyword">return</span> <span class="keyword">true</span>;<span class="comment">// Who knows how huge it is</span></div><div class="line">		<span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<blockquote>
-<ul>
-<li>qq:2574919263</li>
-<li>email:apeacewei@gmail.com<br>欢迎一起学习交流</li>
-</ul>
-</blockquote>
+        <p>今天研究了一下快速排序的优化问题，关于快速排序的优化，很多人已经有很详细的解释了，我就不多做详细的阐述，主要实现一下代码，解释一下jdk中Arrays.sort,并对比一下，做一个总结。<a id="more"></a></p>
+<p>###1.普通快速排序<br>先上代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">quickSort</span><span class="params">(<span class="keyword">int</span>[] a, <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span>(left &lt; right) &#123;</div><div class="line">        <span class="keyword">int</span> pivot = partition(a, left, right);</div><div class="line">        quickSort(a, left, pivot - <span class="number">1</span>);</div><div class="line">        quickSort(a, pivot + <span class="number">1</span>, right);            </div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">partition</span><span class="params">(<span class="keyword">int</span>[] a, <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> pivot = a[left];</div><div class="line">    <span class="keyword">while</span>(left &lt; right) &#123;</div><div class="line">        <span class="keyword">while</span>(left &lt; right &amp;&amp; a[right] &gt;= pivot) right--;</div><div class="line">        a[left] = a[right];</div><div class="line">        <span class="keyword">while</span>(left &lt; right &amp;&amp; a[left] &lt; pivot) left++;</div><div class="line">        a[right] = a[left];</div><div class="line">    &#125;</div><div class="line">    a[left] = pivot;</div><div class="line">    <span class="keyword">return</span> left;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>###2.随机枢纽位置快速排序<br>普通快排每次划分并递归时，找第一个(或最后一个)元素做枢纽，因此缺点很明显，当数组有序或部分有序时，每次划分只能使待排序序列减一，使算法复杂度在最差情况下为Θ(n^2)。因此可以用随机选取枢纽位置来进行划分的方式改善。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 把上面普通快排的partition换成它即可</span></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">randomPartition</span><span class="params">(<span class="keyword">int</span>[] a, <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> piovtPos = getRandomPivo(left, right);</div><div class="line">        <span class="keyword">int</span> piovt = a[piovtPos];</div><div class="line">        a[piovtPos] = a[left];</div><div class="line">        <span class="keyword">while</span>(left &lt; right) &#123;</div><div class="line">            <span class="keyword">while</span>(left &lt; right &amp;&amp; a[right] &gt;= piovt) right--;</div><div class="line">            a[left] = a[right];</div><div class="line">            <span class="keyword">while</span>(left &lt; right &amp;&amp; a[left] &lt; piovt) left++;</div><div class="line">            a[right] = a[left];</div><div class="line">        &#125;</div><div class="line">        a[left] = piovt;</div><div class="line">        <span class="keyword">return</span> left;</div><div class="line">    &#125;</div><div class="line">    Random random = <span class="keyword">new</span> Random();</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">getRandomPivo</span><span class="params">(<span class="keyword">int</span> left, <span class="keyword">int</span> right)</span></span>&#123;<span class="comment">// 获取随机枢纽位置</span></div><div class="line">        </div><div class="line">        <span class="keyword">int</span> max = right-left+<span class="number">1</span>;<span class="comment">// [0,length)</span></div><div class="line">        <span class="keyword">return</span> random.nextInt(max)+left;<span class="comment">// [left,right+1)</span></div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>###3.三数取中快速排序<br>对于随机选取枢纽元素的情况下，我们肯定希望取得的枢纽值的大小越接近中位数越好。怎样实现呢？我们可以随机取三个数用中间大小的数做枢纽元素，但这样效率不高。最佳的做法是把数组分为等长的四分，从3个分割点中取中。这样可以使枢纽元素接近中位数。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 将上面排序中getRandomPivo方法换为此方法即可</span></div><div class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">getMidPivo</span><span class="params">(<span class="keyword">int</span>[] a, <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span></span>&#123;<span class="comment">// 获取随机枢纽位置</span></div><div class="line">  		  </div><div class="line">       <span class="keyword">int</span> m = (right+left)&gt;&gt;<span class="number">1</span>;<span class="comment">// 中间位置</span></div><div class="line">       <span class="keyword">int</span> l = m - (right+left)&gt;&gt;<span class="number">2</span> <span class="comment">// 四分之一位置</span></div><div class="line">       <span class="keyword">int</span> r = m + (right+left)&gt;&gt;<span class="number">2</span> <span class="comment">// 四分之三位置</span></div><div class="line">       </div><div class="line">       <span class="keyword">if</span>(a[l] &gt; a[r]) &#123;<span class="comment">// 交换l，r，使a[l]&lt;a[r]</span></div><div class="line">       	l = l + r;</div><div class="line">       	r = l - r;</div><div class="line">       	l = l - r;</div><div class="line">       &#125;</div><div class="line">       <span class="keyword">if</span>(a[m]&lt;a[l]) <span class="keyword">return</span> l;</div><div class="line">       <span class="keyword">if</span>(a[m]&gt;a[r]) <span class="keyword">return</span> r;</div><div class="line">       retrun m;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<p>###4.三数取中快速排序+插入排序<br>由于快速排序的递归是要占用堆空间的，当待排序列被分割到比较小的时候，没必要继续递归而增加堆栈的深度，因此可以切换为插入排序来提高效率。因此，在代码证可以判断，当待排序列小于40的时候，切换为插入排序。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 将quickSort方法改为如下：</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">midQuickSortI</span><span class="params">(<span class="keyword">int</span>[] a, <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span>(right - left &lt; <span class="number">40</span>) &#123;</div><div class="line">            insertSort(a, left, right);</div><div class="line">        &#125;<span class="keyword">else</span></div><div class="line">            <span class="keyword">if</span>(left &lt; right) &#123;</div><div class="line">                <span class="keyword">int</span> pivot = midPartition(a, left, right);</div><div class="line">                midQuickSortI(a, left, pivot - <span class="number">1</span>);</div><div class="line">                midQuickSortI(a, pivot + <span class="number">1</span>, right);            </div><div class="line">            &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">insertSort</span><span class="params">(<span class="keyword">int</span>[] a, <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span> </span>&#123;<span class="comment">// 插入排序</span></div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = left+<span class="number">1</span>; i &lt;= right; i++) &#123;</div><div class="line">            <span class="keyword">int</span> j = i;</div><div class="line">            <span class="keyword">int</span> temp = a[i];<span class="comment">// 待插入</span></div><div class="line">            <span class="keyword">while</span>(j &gt; <span class="number">0</span> &amp;&amp; temp &lt; a[j-<span class="number">1</span>]) &#123;</div><div class="line">                a[j] = a[j-<span class="number">1</span>];</div><div class="line">                j--;</div><div class="line">            &#125;</div><div class="line">            a[j] = temp;</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>###5.三数取中快速排序+插入排序+忽略重复<br>虽然上面方法解决了有序数组与短数组方面的性能提升，但还有一种情况，就是如果数组中有很多的重复元素的话，那么当枢纽值为一个重复次数很多的元素时，那些跟它相等的元素本可以不再继续参与排序了的。因此，每次划分排序时移位时我们可以让与枢纽元素一样大的元素聚集在枢纽元素两侧然后下次划分时把他们全部排除在外。</p>
+<p>下面给出终极快速排序代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eventualQuickSort</span><span class="params">(<span class="keyword">int</span>[] a, <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span> </span>&#123;</div><div class="line">    <span class="comment">// 小数组用插入排序</span></div><div class="line">    <span class="keyword">if</span>(right - left &lt; <span class="number">40</span>) &#123;</div><div class="line">        insertSort(a, left, right+<span class="number">1</span>);</div><div class="line">        <span class="keyword">return</span>;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">//大数组递归快排                </span></div><div class="line">    <span class="keyword">int</span> low = left; <span class="comment">// 保存左右边界</span></div><div class="line">    <span class="keyword">int</span> hight = right; </div><div class="line">    <span class="keyword">int</span> leftSameLen = <span class="number">0</span>;<span class="comment">// 记录左右两边与枢纽元素等大的元素个数</span></div><div class="line">    <span class="keyword">int</span> rightSameLen = <span class="number">0</span>;</div><div class="line">    </div><div class="line">    <span class="keyword">int</span> piovtPos = getMidPivo(a,left, right); <span class="comment">// 三数取中枢纽位置(见上面3.代码)</span></div><div class="line">    <span class="keyword">int</span> piovt = a[piovtPos]; <span class="comment">// 保存枢纽元素</span></div><div class="line">    a[piovtPos] = a[left]; <span class="comment">// 先将枢纽移动到最左边</span></div><div class="line"></div><div class="line">    <span class="keyword">while</span>(left &lt; right) &#123;</div><div class="line">        </div><div class="line">        <span class="keyword">while</span>(left &lt; right &amp;&amp; a[right] &gt;= piovt) &#123;</div><div class="line">            <span class="keyword">if</span>(a[right] == piovt) &#123;<span class="comment">// 将与枢纽元素等大元素移动到最右边</span></div><div class="line">                a[right] = a[hight-rightSameLen];</div><div class="line">                a[hight-rightSameLen] = piovt;</div><div class="line">                rightSameLen ++;</div><div class="line">            &#125;</div><div class="line">            right--;</div><div class="line">        &#125; </div><div class="line">        a[left] = a[right];</div><div class="line">        </div><div class="line">        <span class="keyword">while</span>(left &lt; right &amp;&amp; a[left] &lt;= piovt) &#123;</div><div class="line">            <span class="keyword">if</span>(a[left] == piovt) &#123;<span class="comment">// 将与枢纽元素等大元素移动到最左边</span></div><div class="line">                a[left] = a[low + leftSameLen];</div><div class="line">                a[low + leftSameLen] = piovt;</div><div class="line">                leftSameLen ++;</div><div class="line">            &#125; </div><div class="line">            left++;</div><div class="line">        &#125;</div><div class="line">        a[right] = a[left];</div><div class="line">    &#125;</div><div class="line">    a[left] = piovt;<span class="comment">// 放回枢纽元素,最后left == right 是枢纽元素最终的位置</span></div><div class="line">    </div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; rightSameLen; i++) &#123;<span class="comment">// 将左右两边的与枢纽元素等大的元素聚集到枢纽元素两边</span></div><div class="line">        a[hight - i] = a[left + <span class="number">1</span> + i];</div><div class="line">        a[left + <span class="number">1</span> + i] = piovt;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; leftSameLen; j++) &#123;</div><div class="line">        a[low + j] = a[left - <span class="number">1</span> - j];</div><div class="line">        a[left - <span class="number">1</span> - j] = piovt;</div><div class="line">    &#125;</div><div class="line">    <span class="comment">// 递归分割并继续排序</span></div><div class="line">    eventualQuickSort(a, low, left - leftSameLen-<span class="number">1</span>);</div><div class="line">    eventualQuickSort(a, left + rightSameLen+<span class="number">1</span> , hight);            </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>###6.Arrays.sort()<br>JDK中的Arrays.sort()用的也是优化过的快速排序，不过优化思路有部分不同。对于基本数据类型，比如int，当数组小于47时用优化过的插入排序，当数组长于47，小于286时，用多路快速排序，数组长于286时进行判断，若有大片的递增序列可用归并排序进行，否则用快排。<br>这里的多路快排与之前的优化思路类似，选择枢纽时，先确定5个轴，e3为正中间，e1+len/7 = e2，e2+len/7 = e3, e3+len/7=e4，e4+len/7=e5，对数组中a[e1]-a[e5]进行冒泡排序。<br><br>若e五个值都不等：e2，e4做轴，每次划分使数组分为三部分，(~,e1)，[e1,e2]，(e2,~)。对两边的部分进行快排，若中间部分小于len*4/7的话也进行快排，否则将与e2,e4等大元素放在e2、e4外侧，不参与快排，对中间剩余部分再继续迭代快排。<br><br>若e五个值有部分相等：e3做轴用传统3-way快排，一次划分完毕后将与e3相等的元素聚集在中间不参与排序了，两边部分继续递归快排。<br><br>说的可能不太清楚，具体细节得自己去查看源码呀～</p>
+<p>###7.总结对比<br>接下来对每个方法进行相同的用相同的数组进行排序计算时间并比较，单位都是ms。</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>随机数组</th>
+<th>有序数组</th>
+<th>重复数组</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>普通快速排序</td>
+<td>130</td>
+<td>StackOverflowError</td>
+<td>4720</td>
+</tr>
+<tr>
+<td>随机枢纽快排</td>
+<td>130</td>
+<td>61</td>
+<td>4648</td>
+</tr>
+<tr>
+<td>三数取中快排</td>
+<td>133</td>
+<td>36</td>
+<td>4584</td>
+</tr>
+<tr>
+<td>三数取中+插入</td>
+<td>98</td>
+<td>13</td>
+<td>4573</td>
+</tr>
+<tr>
+<td>三数取中+插入+聚集枢纽</td>
+<td>184</td>
+<td>77</td>
+<td>46</td>
+</tr>
+<tr>
+<td>Array.sort</td>
+<td>128</td>
+<td>16</td>
+<td>71</td>
+</tr>
+</tbody>
+</table>
+<p>其中：所有数组长度均为1000000。<br>“随机数组”每一位均为在[0-500000)之间随机生成；<br>“有序数组”即从第一位开始0,1,2…一直到1000000-1；<br>“重复数组”每一位均为在[0-100)之间随机生成</p>
+<p>由此可看出每一步优化的思路都起到了效果,jdk中的实现要更加复杂一些，但效果也更好，适用场景也更加宽泛一些。</p>
+<p>转载请注明出处：<a href="https://apeacer.github.io">https://apeacer.github.io</a><br><br>参考博客:<br><br><a href="http://blog.csdn.net/insistgogo/article/details/7785038#comments" target="_blank" rel="external">http://blog.csdn.net/insistgogo/article/details/7785038#comments</a><br><a href="http://www.jianshu.com/p/6d26d525bb96" target="_blank" rel="external">http://www.jianshu.com/p/6d26d525bb96</a></p>
 
       
 
@@ -209,9 +255,31 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">sort</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
 
       
+  <div class="article-category tagcloud">
+    <i class="icon-book icon"></i>
+    <ul class="article-tag-list">
+       
+            <li class="article-tag-list-item">
+              <a href="/categories/algorithm/" class="article-tag-list-link color5">algorithm</a>
+            </li>
+          
+    </ul>
+  </div>
+
       
 
       
@@ -219,8 +287,8 @@
 <!-- 这个counter-tag counter的样式，你们得自己弄啊.. 我就不想贴样式代码了.. -->
 <div class="counter-tag counter">
     <!-- 别忘记这个类名... post-title-link -->
-    <span id="/about/index.html" class="leancloud_visitors post-title-link"
-          style="font-size: 12px" data-flag-title="about">
+    <span id="/2017/03/02/20170302quckSort/" class="leancloud_visitors post-title-link"
+          style="font-size: 12px" data-flag-title="关于快速排序算法优化的研究和实现">
     <!-- 这里给出浏览数,定义在language中哈-->
         Hits
     </span>
@@ -272,7 +340,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=https://apeacer.github.io/about/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://apeacer.github.io/2017/03/02/20170302quckSort/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -284,13 +352,41 @@
 </article>
 
   
+<nav id="article-nav">
+  
+  
+    <a href="/2017/02/26/20170225_bulidHexo/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">用Hexo+GitHug搭建个人博客</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 
 
 
 
   
-    <div class="duoshuo"></div>
+  <div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="20170302quckSort" data-title="关于快速排序算法优化的研究和实现" data-url="https://apeacer.github.io/2017/03/02/20170302quckSort/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"apeacer"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
   
 
 
@@ -317,7 +413,7 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
